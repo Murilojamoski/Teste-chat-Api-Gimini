@@ -2,12 +2,15 @@ const messagesDiv = document.getElementById("messages");
 const userInput = document.getElementById("userInput");
 const sendButton = document.getElementById("sendButton");
 
-function Admensagem(quem,texto){
-    const mensagem = document.createElement('div')
-    mensagem.textContent = texto
-    mensagem.className = quem === "ia"?"mensagemIa":"mensagemUser"
-    messagesDiv.appendChild(mensagem)
-    messagesDiv.scrollTop = messagesDiv.scrollHeight
+
+function Admensagem(quem, texto) {
+    const mensagem = document.createElement('div');
+    mensagem.innerHTML = texto
+        .replace(/\n/g, '<br>')
+        .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+    mensagem.className = quem === "ia" ? "mensagemIa" : "mensagemUser";
+    messagesDiv.appendChild(mensagem);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
 }
 
 Admensagem("ia","Oi! Eu sou o Ernestro, seu mascote virtual. Estou aqui para te ajudar com dicas de exercícios personalizados. 😊");
